@@ -8,7 +8,7 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
     inverted_dict: dict[str, str] = {}
     for key in input_dict:
         value = input_dict[key]
-        if key in inverted_dict:
+        if value in inverted_dict:
             raise KeyError("Key already in dictionary")
         inverted_dict[value] = key
     return inverted_dict
@@ -48,5 +48,5 @@ def bin_len(chosen_list: list[str]) -> dict[int, set[str]]:
         if length in return_dict:
             return_dict[length].add(i)
         else:
-            return_dict[length] = set(i)
+            return_dict[length] = {i}
     return return_dict
