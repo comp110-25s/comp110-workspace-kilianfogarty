@@ -32,7 +32,7 @@ class River:
             if i.age <= 3:
                 surviving_fish.append(i)
         for i in self.bears:
-            if i.age <= 3:
+            if i.age <= 5:
                 surviving_bears.append(i)
 
         self.fish = surviving_fish
@@ -49,18 +49,17 @@ class River:
 
     def check_hunger(self):
         """Checks list of bears, if one is too hungry it is removed."""
-        leftover_bears: list[Bear] = self.bears
+        leftover_bears: list[Bear] = []
         for i in self.bears:
             if i.hunger_score >= 0:
                 leftover_bears.append(i)
         self.bears = leftover_bears
-
         return None
 
     def repopulate_fish(self):
         """Finds number of pairs and has each have four kids."""
         i: int = 0
-        fish_offspring_count: int = 4 * len(self.fish) // 2
+        fish_offspring_count: int = 4 * (len(self.fish) // 2)
         while i < fish_offspring_count:
             new_fish = Fish()
             self.fish.append(new_fish)
@@ -79,6 +78,7 @@ class River:
 
     def view_river(self):
         """Prints the amount of fish and bears at that moment."""
+        print(f"~~~ Day: {self.day} ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
         return None
